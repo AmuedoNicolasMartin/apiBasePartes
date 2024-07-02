@@ -1,0 +1,38 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:rgb(185, 178, 178);
+    color:rgb(65, 61, 61);
+    line-height: 1.6;
+    text-align: center;
+   
+}
+
+
+.bi{
+    height: 100vh;
+    overflow:auto;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding:auto;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.col-md-4{
+    background-color: rgb(175, 8, 64);
+    width: 40%;
+}
+
+.col-md-8{
+    width: 60%;
+}
+
+
+/**{
+    border: 1px solid black;
+}*/
+
