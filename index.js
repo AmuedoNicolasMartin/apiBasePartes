@@ -3,6 +3,7 @@ var dotenv = require('dotenv').config();
 var modulo = require('./myApp.js');
 var bodyParser = require('body-parser');
 var path = require('path');
+require('./db-connection.js');
 var cors = require('cors');
 var express = require('express');
 
