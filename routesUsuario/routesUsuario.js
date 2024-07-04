@@ -1,9 +1,10 @@
 var express = require('express');
 const UserModel = require('../models.js').User;
+const bcrypt = require('bcrypt');
 
 async function createUser(pass,email,name,age,fecha,activo){
     const newUser = new UserModel({
-        pass: pass,
+        pass: await bcrypt.hash(pass, 12),
         email: email,
         name: name,
         age: age,
