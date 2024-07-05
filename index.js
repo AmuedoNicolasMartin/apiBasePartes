@@ -7,8 +7,9 @@ var path = require('path');
 require('./db-connection.js');
 var cors = require('cors');
 var express = require('express');
-
+const methodOverride = require('method-override');
 var app = express();
+app.use(methodOverride('_method'));
 
 modulo.servir(app,express,bodyParser,cors,path);
 

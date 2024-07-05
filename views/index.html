@@ -74,6 +74,26 @@
             </form>
             <code id="jsongete"></code>
         </div>
+        <div id="form3">
+            <h1>Patch del estado</h1>
+            <form action='/acounts/?_method=PATCH' id="alter_form"  method='POST'>
+                <label id="pass">Password:</label>
+                </br>
+                <input id="pass" name="pass" type="text" required=""/>
+                </br>
+                <label id="name">Nombre:</label>
+                </br>
+                <input id="name" name="name" type="text" required=""/>
+                </br>
+                <label id="activo">Nuevo estado:</label>
+                </br>
+                <input id="activo" name="activo" type="checkbox"/>
+                </br>
+                <button type="submit">Patch</button>
+                </br>
+            </form>
+            <code id="jsonpatch"></code>
+        </div>
         
     </div>
     <div class="col-md-4 bi"></div>

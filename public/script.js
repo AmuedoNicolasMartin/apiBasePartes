@@ -33,3 +33,23 @@ document.getElementById('get_form').addEventListener('submit', e => {
     .then(res => res.json())
     .then(data => {document.getElementById('jsongete').innerText = JSON.stringify(data)});
 });
+
+//ejemplo patch
+document.getElementById('alter_form').addEventListener('submit', e => {
+    e.preventDefault();
+    const content = {
+        pass: e.target[0].value, 
+        name: e.target[1].value,
+        activo: e.target[2].checked
+    };
+    fetch('/acounts/',{
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(content)
+    })
+    .then(res => res.json())
+    .then(data => {document.getElementById('jsonpatch').innerText = JSON.stringify(data)});
+});

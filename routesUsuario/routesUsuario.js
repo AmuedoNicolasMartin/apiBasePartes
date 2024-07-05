@@ -19,6 +19,11 @@ async function createUser(pass,email,name,age,fecha,activo){
 async function findEmail(email){
     return UserModel.findOne({email:email}).exec();
   }
+
+async function findMulti(name){
+    return UserModel.find({name:name}).exec();
+  }
+
 const usuarioRoutes = express.Router();
 
 //post example
@@ -55,7 +60,34 @@ usuarioRoutes.get('/', async(req,res)=>{
   return res.json(user);
 });
 
-//get example
 
+//patch example
+usuarioRoutes.patch('/', async(req,res)=>{
+  const { pass, name, activo } = req.body;
+ 
+   const user = await findMulti(name);
+     if(!user){
+       return  res.status(404).json({error: 'Usuario inexistente.'});
+     }
+     
+     for (var i = user.length-1; i >= 0; i--){
+     bcrypt.compare(pass, user[i].pass, (err, Valid) => {
+       i+=1; //tener en cuenta que Valid es boolean. hay que sumarle 1 pues al entrar resta 1 porque si.
+       console.log(i);
+       if (err){
+         throw new Error(err)
+       }
+       console.log(Valid);
+       if (Valid == true){
+         console.log('Estado modificado correctamente.');
+         user[i].activo = activo?true:false;
+         user[i].save();
+         return;
+         //return res.status(200).json({mensaje: 'El estado fue modificado correctamente.'});
+       }    
+     });
+     };
+     return res.status(200).json({mensaje: 'Cambios de estado efectuados.', ival: i})
+ });
 
 export default usuarioRoutes;
