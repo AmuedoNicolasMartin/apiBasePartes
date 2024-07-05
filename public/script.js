@@ -12,12 +12,6 @@ document.getElementById('PostForm').addEventListener('submit', e => {
         age: e.target[3].value,
         fecha: e.target[4].value,
         activo: e.target[5].checked,
-        //pass: e.target[0].value, 
-        //name: e.target[1].value,SS
-        //email: e.target[2].value,
-        //age: e.target[3].value,
-        //fecha: e.target[4].value,
-        //activo: e.target[5].checked
     };
     fetch('/acounts/',{
         method: 'POST',
@@ -29,4 +23,13 @@ document.getElementById('PostForm').addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(data => {document.getElementById('jsonPost').innerText = JSON.stringify(data)});
+});
+
+//ejemplo get
+document.getElementById('get_form').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = e.target[0].value;
+    fetch(`/acounts/?name=${name}`)
+    .then(res => res.json())
+    .then(data => {document.getElementById('jsongete').innerText = JSON.stringify(data)});
 });

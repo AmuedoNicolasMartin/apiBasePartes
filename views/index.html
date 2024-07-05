@@ -32,35 +32,49 @@
             rrrrrrrrrrrrrrrrrrrrrrrrrrrffsafsafafasj9sjfihsjiofjofishjfojfaijfoajiofjnbdookonnobdfobnodnondfonbonfbokokbdbr
             controlar desbordamiento.
         </p>
-        <h1>PostForm</h1>
-        <form action="/acounts/" content-type="application/json" id="PostForm" class="border" method="post">
-            <label id="pass">Password:</label>
-            </br>
-            <input id="pass" name="pass" type="text" required=""/>
-            </br>
-            <label id="email">Email:</label>
-            </br>
-            <input id="email" name="email" type="email" required=""/>
-            </br>
-            <label id="name">Name:</label>
-            </br>
-            <input id="name" name="name" type="text" required=""/>
-            </br>
-            <label id="age">Age:</label>
-            </br>
-            <input id="age" name="age" type="number" required=""/>
-            </br>
-            <label id="fecha">Fecha Inicio:</label>
-            </br>
-            <input id="fecha" name="fecha" type="date" required=""/>
-            </br>
-            <label id="activo">Activo:</label>
-            </br>
-            <input id="activo" name="activo" type="checkbox"/>
-            </br>
-            <button type="submit">Nuevo Usuario:</button>
-        </form>
-        <code id="jsonPost"></code>
+        <div id="form1">
+            <h1>PostForm</h1>
+            <form action="/acounts/" content-type="application/json" id="PostForm" class="border" method="post">
+                <label id="pass">Password:</label>
+                </br>
+                <input id="pass" name="pass" type="text" required=""/>
+                </br>
+                <label id="email">Email:</label>
+                </br>
+                <input id="email" name="email" type="email" required=""/>
+                </br>
+                <label id="name">Name:</label>
+                </br>
+                <input id="name" name="name" type="text" required=""/>
+                </br>
+                <label id="age">Age:</label>
+                </br>
+                <input id="age" name="age" type="number" required=""/>
+                </br>
+                <label id="fecha">Fecha Inicio:</label>
+                </br>
+                <input id="fecha" name="fecha" type="date" required=""/>
+                </br>
+                <label id="activo">Activo:</label>
+                </br>
+                <input id="activo" name="activo" type="checkbox"/>
+                </br>
+                <button type="submit">Nuevo Usuario:</button>
+            </form>
+            <code id="jsonPost"></code>
+        </div>
+        <div id="form2">
+            <h1>Get Form</h1>
+            <form action='/acounts' id="get_form"  method='GET'>
+                <label id="name">Nombre:</label>
+                </br>
+                <input id="name" name="name" type="text" required=""/>
+                </br>
+                <button type="submit">Get</button>
+            </form>
+            <code id="jsongete"></code>
+        </div>
+        
     </div>
     <div class="col-md-4 bi"></div>
 </div>

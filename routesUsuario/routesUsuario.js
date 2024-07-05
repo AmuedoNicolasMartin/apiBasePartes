@@ -21,6 +21,7 @@ async function findEmail(email){
   }
 const usuarioRoutes = express.Router();
 
+//post example
 usuarioRoutes.post('/',async(req,res)=>{
     const {
         pass,
@@ -42,6 +43,19 @@ usuarioRoutes.post('/',async(req,res)=>{
       return res.status(404).json({mensaje:'El usuario ya existe.'});
      }
 });
+
+//get example
+usuarioRoutes.get('/', async(req,res)=>{
+  const {name} = req.query;
+  console.log(name);
+  const user = await UserModel.find({name:name}).exec();
+  if (!user){
+    return res.status(404).send();
+  }
+  return res.json(user);
+});
+
+//get example
 
 
 export default usuarioRoutes;
