@@ -28,6 +28,14 @@ async function findId(id){
   return UserModel.findById(id).exec();
 }
 
+async function findUserName(name){
+  return UserModel.findOne({name:name}).exec();
+}
+
+async function removeById(id){
+  return UserModel.deleteOne(id); 
+}
+
 
 const usuarioRoutes = express.Router();
 
@@ -138,6 +146,32 @@ usuarioRoutes.put('/', async(req,res)=>{
       return res.status(404).json({error: 'Password incorrecta.'})
     } 
   });
+
+});
+
+usuarioRoutes.delete('/', async(req,res) => {
+
+  const { pass, name } = req.body;
+  const user = await findUserName(name);
+  if (user){
+  console.log(user);
+  bcrypt.compare(pass, user.pass, (err, Valid) => { //tener en cuenta que res es boolean.
+    if (err){
+      throw new Error(err)
+    }
+    console.log(Valid);
+    if (Valid == true){
+      console.log('Usuario Eliminado.')
+      removeById(user._id);
+      return res.status(200).json({mensaje:'El usuario fue eliminado correctamente.'})
+    }else{
+      console.log('Password incorrecta.');
+      return res.status(404).json({error:'Password incorrecta.'})
+    }      
+  })
+  }else{
+    return res.status(404).json({Error:'El usuario no existe.'})
+  }
 
 });
 

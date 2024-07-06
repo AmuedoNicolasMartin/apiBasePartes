@@ -77,3 +77,23 @@ document.getElementById('put_form').addEventListener('submit', e => {
     .then(res => res.json())
     .then(data => {document.getElementById('jsonUpdate').innerText = JSON.stringify(data)});
 });
+
+//ejemplo delete
+
+document.getElementById('delete_form').addEventListener('submit', e => {
+    e.preventDefault();
+    const content = {
+        pass: e.target[0].value,
+        name: e.target[1].value
+    };
+    fetch('/acounts/',{
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(content)
+    })
+    .then(res => res.json())
+    .then(data => {document.getElementById('jsonDelete').innerText = JSON.stringify(data)});
+})
