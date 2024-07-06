@@ -94,6 +94,41 @@
             </form>
             <code id="jsonpatch"></code>
         </div>
+        <div id="form4">
+            <h1>Update Form</h1>
+            <form action='/acounts/?_method=PUT' id="put_form"  method='POST'>
+                <label id="_id">Id Usuario:</label>
+                </br>
+                <input id="_id" name="_id" type="text" required=""/>
+                </br>
+                <label id="pass">Password:</label>
+                </br>
+                <input id="pass" name="pass" type="text" required=""/>
+                </br>
+                <label id="name">New Name:</label>
+                </br>
+                <input id="name" name="name" type="text" required=""/>
+                </br>
+                <label id="email">New Email:</label> 
+                </br>
+                <input id="email" name="email" type="email" required=""/>
+                </br>
+                <label id="activo">New Estado:</label>
+                </br>
+                <input id="activo" name="activo" type="checkbox"/>
+                </br>
+                <label id="age">New Age:</label>
+                </br>
+                <input id="age" name="age" type="number" required=""/>
+                </br>
+                <label id="fecha">New Date:</label>
+                </br>
+                <input id="fecha" name="fecha" type="date" required=""/>
+                </br>
+                <button type="submit">Update</button>
+            </form>
+            <code id="jsonUpdate"></code>
+        </div>
         
     </div>
     <div class="col-md-4 bi"></div>

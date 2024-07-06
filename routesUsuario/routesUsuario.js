@@ -24,6 +24,11 @@ async function findMulti(name){
     return UserModel.find({name:name}).exec();
   }
 
+async function findId(id){
+  return UserModel.findById(id).exec();
+}
+
+
 const usuarioRoutes = express.Router();
 
 //post example
@@ -89,5 +94,51 @@ usuarioRoutes.patch('/', async(req,res)=>{
      };
      return res.status(200).json({mensaje: 'Cambios de estado efectuados.', ival: i})
  });
+
+usuarioRoutes.put('/', async(req,res)=>{
+  
+  const {_id, pass, name, email, activo, age, fecha } = req.body;
+  
+  if (!name || typeof name !== 'string'){
+    return  res.status(400).send('Ese nombre no es valido.');
+  }
+  const expRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  if (!email || expRegex.test(email)==false){
+    return res.status(400).send('El email no es valido.');
+  }
+  let activoBool = activo?true:false;
+  if (! activo in req.body){
+    return res.status(400).send('Debe enviar un valor de activo.');
+  }else if (typeof activoBool !== 'boolean'){
+    return res.status(400).send('Ese activo no es valido.');
+  }
+  
+  var user = await findId(_id);
+  
+  if(!user){
+    return  res.status(404).json({error: 'Usuario inexistente.'});
+  }
+  
+  bcrypt.compare(pass, user.pass, async(err, Valid) => {
+    if (err){
+      throw new Error(err)
+    }
+    console.log(Valid);
+    if (Valid == true){
+      console.log('Datos modificados.');
+      user.pass = await bcrypt.hash(pass, 12);
+      user.name = name;
+      user.email = email;
+      user.activo = activoBool;
+      user.age = age;
+      user.fecha = fecha;
+      user.save();
+      return res.status(200).json({mensaje: 'Datos modificados.'});
+    }else{
+      return res.status(404).json({error: 'Password incorrecta.'})
+    } 
+  });
+
+});
 
 export default usuarioRoutes;

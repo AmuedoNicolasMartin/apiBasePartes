@@ -53,3 +53,27 @@ document.getElementById('alter_form').addEventListener('submit', e => {
     .then(res => res.json())
     .then(data => {document.getElementById('jsonpatch').innerText = JSON.stringify(data)});
 });
+
+//ejemplo put
+document.getElementById('put_form').addEventListener('submit', e => {
+    e.preventDefault();
+    const content = {
+        _id: e.target[0].value,
+        pass: e.target[1].value,
+        name: e.target[2].value,
+        email: e.target[3].value,
+        activo: e.target[4].checked,
+        age: e.target[5].value,
+        fecha: e.target[6].value
+    };
+    fetch('/acounts/',{
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(content)
+    })
+    .then(res => res.json())
+    .then(data => {document.getElementById('jsonUpdate').innerText = JSON.stringify(data)});
+});
