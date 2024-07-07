@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 require('bootstrap');
 
 //ejemplo post
@@ -96,4 +96,5 @@ document.getElementById('delete_form').addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then(data => {document.getElementById('jsonDelete').innerText = JSON.stringify(data)});
-})
+});
+
