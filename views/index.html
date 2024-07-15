@@ -15,6 +15,22 @@
     <link rel="icon" href="#" />
     <link rel="stylesheet" href="/public/style.css" type="text/css">
     <link rel="stylesheet" href="/public/bootstrap.min.css">
+    <script type="text/javascript" src="/public/jquery/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#newget").on("click", function(){
+                alert("Este es un mensaje jquery.");
+                $("#parrafohtml").html("Este es un mensaje jQuery");
+            });
+        }); 
+        /*$(document).ready(function(){
+            $("#newget").click(function(){
+            $.get("../public/apisota.json", function(data, status){
+                $("#parrafohtml").html(JSON.stringify(data));
+                });
+            });
+        })*/
+    </script> 
 </head>
 <body>
     <header>
@@ -151,6 +167,11 @@
             <!--<button class="btn btn-default">Heros:</button>-->
             </br>
             <code class="infojson"></code>
+        </div>
+        <div>
+            <h2>Alerta jQuery</h2>
+            <button name="nuevog" id="newget" type="button" class="button">Ck</button>
+            <p id="parrafohtml"></p> 
         </div>
         
     </div>
